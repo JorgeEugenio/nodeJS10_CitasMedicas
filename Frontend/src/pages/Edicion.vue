@@ -2,10 +2,10 @@
 	<div class="p-grid button-demo">
 		<div class="p-col-12 p-md-12">
 			<div class="card">
-				<Button @click="CambiarEstadoPlan" label="Plan" :class="CambiarEstiloBotonPlan" />
-				<Button @click="CambiarEstadoSector" label="Sector" :class="CambiarEstiloBotonSector" />
-				<Button @click="CambiarEstadoTorre" label="Torre" :class="CambiarEstiloBotonTorre" />
-				<Button @click="CambiarEstadoCuentaPago" label="Cuenta de Pago" :class="CambiarEstiloBotonCuentaPago" />
+				<Button @click="CambiarestadoPaciente" label="Paciente" :class="CambiarEstiloBotonPlan" />
+				<Button @click="CambiarEstadoUsuario" label="Usuario" :class="CambiarEstiloBotonUsuario" />
+                <Button @click="CambiarEstadoEspecialidad" label="Especialidad" :class="CambiarEstiloBotonEspecialidad" />
+				<Button @click="CambiarEstadoDoctor" label="Doctor" :class="CambiarEstiloBotonDoctor" />
                 <Button @click="CambiarEstadoCliente" label="Clientes" :class="CambiarEstiloBotonCliente" />
                 <Button @click="CambiarEstadoContrato" label="Contrato" :class="CambiarEstiloBotonContrato" />
                 <Button @click="CambiarEstadoContratoDetalle" label="Contratos Detalle" :class="CambiarEstiloBotonContratoDetalle" />
@@ -14,17 +14,17 @@
             <div>
                 <BienvenidosEdicion v-show="estadoBienvenidoEdicion"/>
             </div>
-            <div class="card" v-if="estadoPlan">
-                <Plan />
+            <div class="card" v-if="estadoPaciente">
+                <Paciente />
             </div>
-            <div class="card" v-if="estadoSector">
-                <Sector />
+            <div class="card" v-if="estadoUsuario">
+                <Usuario />
             </div>
-            <div class="card" v-if="estadoTorre">
-                <Torre />
+            <div class="card" v-if="estadoDoctor">
+                <Doctor />
             </div>
-            <div class="card" v-if="estadoCuentaPago">
-                <CuentaPago />
+            <div class="card" v-if="estadoEspecialidad">
+                <Especialidad />
             </div>
             <div class="card" v-if="estadoCliente">
                 <Cliente />
@@ -44,10 +44,10 @@
 
 <script>
 import BienvenidosEdicion from '../components/contenedor/BienvenidosEdicion'
-import Plan from '../components/contenedor/plan/Plan'
-import Sector from '../components/contenedor/sector/Sector'
-import Torre from '../components/contenedor/torre/Torre'
-import CuentaPago from '../components/contenedor/cuentapago/CuentaPago'
+import Paciente from '../components/contenedor/paciente/Paciente'
+import Usuario from '../components/contenedor/usuario/Usuario'
+import Doctor from '../components/contenedor/doctor/Doctor'
+import Especialidad from '../components/contenedor/especialidad/Especialidad'
 import Cliente from '../components/contenedor/cliente/Cliente'
 import ContratoDetalle from '../components/contenedor/contrato/ContratoDetalle'
 import CreadorContrato from '../components/contenedor/contrato/CreadorContrato'
@@ -55,10 +55,10 @@ import Contrato from '../components/contenedor/contrato/Contrato'
 export default {
     components: {
         BienvenidosEdicion,
-        Plan,
-        Sector,
-        Torre,
-        CuentaPago,
+        Paciente,
+        Usuario,
+        Doctor,
+        Especialidad,
         Cliente,
         ContratoDetalle,
         CreadorContrato,
@@ -67,10 +67,10 @@ export default {
     data() {
         return {
             estadoBienvenidoEdicion: true,
-            estadoPlan : false,
-            estadoSector : false,
-            estadoTorre : false,
-            estadoCuentaPago : false,
+            estadoPaciente : false,
+            estadoUsuario : false,
+            estadoDoctor : false,
+            estadoEspecialidad : false,
             estadoCliente : false,
             estadoContrato : false,
             estadoContratoDetalle : false,
@@ -82,44 +82,44 @@ export default {
 
     },
     methods: {
-        CambiarEstadoPlan(){
+        CambiarestadoPaciente(){
             this.estadoBienvenidoEdicion = false
-            this.estadoPlan = true
-            this.estadoSector = false
-            this.estadoTorre = false
-            this.estadoCuentaPago = false
+            this.estadoPaciente = true
+            this.estadoUsuario = false
+            this.estadoDoctor = false
+            this.estadoEspecialidad = false
             this.estadoCliente = false
             this.estadoCreadorContrato = false
             this.estadoContrato = false
         },
-        CambiarEstadoSector(){
+        CambiarEstadoUsuario(){
             this.estadoBienvenidoEdicion = false
-            this.estadoPlan = false
-            this.estadoSector = true
-            this.estadoTorre = false
-            this.estadoCuentaPago = false
-            this.estadoCliente = false
-            this.estadoContratoDetalle = false
-            this.estadoCreadorContrato = false
-            this.estadoContrato = false
-        },
-        CambiarEstadoTorre(){
-            this.estadoBienvenidoEdicion = false
-            this.estadoPlan = false
-            this.estadoSector = false
-            this.estadoTorre = true
-            this.estadoCuentaPago = false
+            this.estadoPaciente = false
+            this.estadoUsuario = true
+            this.estadoDoctor = false
+            this.estadoEspecialidad = false
             this.estadoCliente = false
             this.estadoContratoDetalle = false
             this.estadoCreadorContrato = false
             this.estadoContrato = false
         },
-        CambiarEstadoCuentaPago(){
+        CambiarEstadoDoctor(){
             this.estadoBienvenidoEdicion = false
-            this.estadoPlan = false
-            this.estadoSector = false
-            this.estadoTorre = false
-            this.estadoCuentaPago = true
+            this.estadoPaciente = false
+            this.estadoUsuario = false
+            this.estadoDoctor = true
+            this.estadoEspecialidad = false
+            this.estadoCliente = false
+            this.estadoContratoDetalle = false
+            this.estadoCreadorContrato = false
+            this.estadoContrato = false
+        },
+        CambiarEstadoEspecialidad(){
+            this.estadoBienvenidoEdicion = false
+            this.estadoPaciente = false
+            this.estadoUsuario = false
+            this.estadoDoctor = false
+            this.estadoEspecialidad = true
             this.estadoCliente = false
             this.estadoContratoDetalle = false
             this.estadoCreadorContrato = false
@@ -127,10 +127,10 @@ export default {
         },
         CambiarEstadoCliente(){
             this.estadoBienvenidoEdicion = false
-            this.estadoPlan = false
-            this.estadoSector = false
-            this.estadoTorre = false
-            this.estadoCuentaPago = false
+            this.estadoPaciente = false
+            this.estadoUsuario = false
+            this.estadoDoctor = false
+            this.estadoEspecialidad = false
             this.estadoCliente = true
             this.estadoContratoDetalle = false
             this.estadoCreadorContrato = false
@@ -139,10 +139,10 @@ export default {
         },
         CambiarEstadoContrato(){
             this.estadoBienvenidoEdicion = false
-            this.estadoPlan = false
-            this.estadoSector = false
-            this.estadoTorre = false
-            this.estadoCuentaPago = false
+            this.estadoPaciente = false
+            this.estadoUsuario = false
+            this.estadoDoctor = false
+            this.estadoEspecialidad = false
             this.estadoCliente = false
             this.estadoContratoDetalle = false
             this.estadoCreadorContrato = false
@@ -151,10 +151,10 @@ export default {
         },
         CambiarEstadoContratoDetalle(){
             this.estadoBienvenidoEdicion = false
-            this.estadoPlan = false
-            this.estadoSector = false
-            this.estadoTorre = false
-            this.estadoCuentaPago = false
+            this.estadoPaciente = false
+            this.estadoUsuario = false
+            this.estadoDoctor = false
+            this.estadoEspecialidad = false
             this.estadoCliente = false
             this.estadoContratoDetalle = true
             this.estadoCreadorContrato = false
@@ -163,10 +163,10 @@ export default {
         },
         CambiarEstadoCreadorContrato(){
             this.estadoBienvenidoEdicion = false
-            this.estadoPlan = false
-            this.estadoSector = false
-            this.estadoTorre = false
-            this.estadoCuentaPago = false
+            this.estadoPaciente = false
+            this.estadoUsuario = false
+            this.estadoDoctor = false
+            this.estadoEspecialidad = false
             this.estadoCliente = false
             this.estadoContratoDetalle = false
             this.estadoCreadorContrato = true
@@ -176,16 +176,16 @@ export default {
     },
     computed:{
         CambiarEstiloBotonPlan(){
-            return this.estadoPlan ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
+            return this.estadoPaciente ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
         },
-        CambiarEstiloBotonSector(){
-            return this.estadoSector ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
+        CambiarEstiloBotonUsuario(){
+            return this.estadoUsuario ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
         },
-        CambiarEstiloBotonTorre(){
-            return this.estadoTorre ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
+        CambiarEstiloBotonDoctor(){
+            return this.estadoDoctor ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
         },
-        CambiarEstiloBotonCuentaPago(){
-            return this.estadoCuentaPago ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
+        CambiarEstiloBotonEspecialidad(){
+            return this.estadoEspecialidad ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
         },
         CambiarEstiloBotonCliente(){
             return this.estadoCliente ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'

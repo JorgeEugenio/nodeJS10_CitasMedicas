@@ -1,5 +1,5 @@
 @echo off
-set database_name=utopianett
+set database_name=citasmedicas
 For /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set mydate=%%c-%%b-%%a)
 set hora=%time:~0,2%
 set hora=%hora: =0%
