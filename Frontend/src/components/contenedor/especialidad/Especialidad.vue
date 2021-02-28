@@ -116,7 +116,7 @@ export default {
 	},
 	methods: {
 		getEspecialidades(){
-			fetch('http://localhost:8000/v1/especialidad')
+			fetch('http://18.230.199.15:8002/v1/especialidad')
 			.then(res => res.json())
 			.then(data => {
 				this.especialidades = data
@@ -149,7 +149,7 @@ export default {
                                 !this.especialidad.detalleEspecialidad == ''
             if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://localhost:8000/v1/especialidad', {
+                    fetch('http://18.230.199.15:8002/v1/especialidad', {
                     method: 'POST',
                     body: JSON.stringify(this.especialidad),
                     headers: {
@@ -167,7 +167,7 @@ export default {
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Pacient Created', life: 3000});		
                 }else {
                     this.getEspecialidad(this.especialidad)
-                    fetch('http://localhost:8000/v1/especialidad/' + this.especialidad._id, {
+                    fetch('http://18.230.199.15:8002/v1/especialidad/' + this.especialidad._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.especialidad),
                     headers: {
@@ -189,7 +189,7 @@ export default {
 		},
 		getEspecialidad(especialidad) {
 			this.nuevo = true
-			fetch('http://localhost:8000/v1/especialidad/' + especialidad._id)
+			fetch('http://18.230.199.15:8002/v1/especialidad/' + especialidad._id)
 				.then(res => res.json())
 				.then(data => {
 				const { nombreEspecialidad, detalleEspecialidad } = data;
@@ -198,7 +198,7 @@ export default {
 				});
 		},
 		deleteEspecialidad() {
-			fetch('http://localhost:8000/v1/especialidad/' + this.especialidad._id, {
+			fetch('http://18.230.199.15:8002/v1/especialidad/' + this.especialidad._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -225,7 +225,7 @@ export default {
 		},
 		deleteselectedEspecialidads() {
 			for (let step = 0; step < this.selectedEspecialidads.length; step++) {
-				fetch('http://localhost:8000/v1/especialidad/' + this.selectedEspecialidads[step]._id, {
+				fetch('http://18.230.199.15:8002/v1/especialidad/' + this.selectedEspecialidads[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',
