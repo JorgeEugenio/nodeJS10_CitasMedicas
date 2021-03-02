@@ -24,6 +24,7 @@ const usuarioRoute = require('./routes/usuarioRoute')
 const doctorRoute = require('./routes/doctorRoute')
 const tablahorarioRoute = require('./routes/tablahorarioRoute')
 const tablacitamedicaRoute = require('./routes/tablacitamedicaRoute')
+const queryRoute = require('./routes/queryRoute')
 
 
 //const puntuacionesRoute = require('./routes/puntuaciones2Route')
@@ -59,6 +60,7 @@ app.use('/v1',usuarioRoute)
 app.use('/v1',doctorRoute)
 app.use('/v1',tablahorarioRoute)
 app.use('/v1',tablacitamedicaRoute)
+app.use('/v1',queryRoute)
 
 
 //app.use('/v1',puntuacionesRoute)

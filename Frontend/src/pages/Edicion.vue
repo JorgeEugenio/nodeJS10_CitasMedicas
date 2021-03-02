@@ -6,10 +6,7 @@
 				<Button @click="CambiarEstadoUsuario" label="Usuario" :class="CambiarEstiloBotonUsuario" />
                 <Button @click="CambiarEstadoEspecialidad" label="Especialidad" :class="CambiarEstiloBotonEspecialidad" />
 				<Button @click="CambiarEstadoDoctor" label="Doctor" :class="CambiarEstiloBotonDoctor" />
-                <Button @click="CambiarEstadoCliente" label="Clientes" :class="CambiarEstiloBotonCliente" />
-                <Button @click="CambiarEstadoContrato" label="Contrato" :class="CambiarEstiloBotonContrato" />
-                <Button @click="CambiarEstadoContratoDetalle" label="Contratos Detalle" :class="CambiarEstiloBotonContratoDetalle" />
-                <Button @click="CambiarEstadoCreadorContrato" label="Creador de Contratos" :class="CambiarEstiloBotonCreadorContrato" />
+                <Button @click="CambiarEstadoQuery" label="Querys" :class="CambiarEstiloBotonQuery" />
 			</div>
             <div>
                 <BienvenidosEdicion v-show="estadoBienvenidoEdicion"/>
@@ -26,18 +23,10 @@
             <div class="card" v-if="estadoEspecialidad">
                 <Especialidad />
             </div>
-            <div class="card" v-if="estadoCliente">
-                <Cliente />
+            <div class="card" v-if="estadoQuery">
+                <Query />
             </div>
-            <div class="card" v-if="estadoContrato">
-                <Contrato />
-            </div>
-            <div class="card" v-if="estadoContratoDetalle">
-                <ContratoDetalle />
-            </div>
-            <div class="card" v-if="estadoCreadorContrato">
-                <CreadorContrato />
-            </div>
+            
 		</div>
 	</div>
 </template>
@@ -48,10 +37,8 @@ import Paciente from '../components/contenedor/paciente/Paciente'
 import Usuario from '../components/contenedor/usuario/Usuario'
 import Doctor from '../components/contenedor/doctor/Doctor'
 import Especialidad from '../components/contenedor/especialidad/Especialidad'
-import Cliente from '../components/contenedor/cliente/Cliente'
-import ContratoDetalle from '../components/contenedor/contrato/ContratoDetalle'
-import CreadorContrato from '../components/contenedor/contrato/CreadorContrato'
-import Contrato from '../components/contenedor/contrato/Contrato'
+import Query from '../components/contenedor/query/Query'
+
 export default {
     components: {
         BienvenidosEdicion,
@@ -59,10 +46,7 @@ export default {
         Usuario,
         Doctor,
         Especialidad,
-        Cliente,
-        ContratoDetalle,
-        CreadorContrato,
-        Contrato
+        Query,
     },
     data() {
         return {
@@ -71,10 +55,7 @@ export default {
             estadoUsuario : false,
             estadoDoctor : false,
             estadoEspecialidad : false,
-            estadoCliente : false,
-            estadoContrato : false,
-            estadoContratoDetalle : false,
-            estadoCreadorContrato : false,
+            estadoQuery : false,
             
         }
     },
@@ -88,9 +69,7 @@ export default {
             this.estadoUsuario = false
             this.estadoDoctor = false
             this.estadoEspecialidad = false
-            this.estadoCliente = false
-            this.estadoCreadorContrato = false
-            this.estadoContrato = false
+            this.estadoQuery = false
         },
         CambiarEstadoUsuario(){
             this.estadoBienvenidoEdicion = false
@@ -98,10 +77,8 @@ export default {
             this.estadoUsuario = true
             this.estadoDoctor = false
             this.estadoEspecialidad = false
-            this.estadoCliente = false
-            this.estadoContratoDetalle = false
-            this.estadoCreadorContrato = false
-            this.estadoContrato = false
+            this.estadoQuery = false
+
         },
         CambiarEstadoDoctor(){
             this.estadoBienvenidoEdicion = false
@@ -109,10 +86,7 @@ export default {
             this.estadoUsuario = false
             this.estadoDoctor = true
             this.estadoEspecialidad = false
-            this.estadoCliente = false
-            this.estadoContratoDetalle = false
-            this.estadoCreadorContrato = false
-            this.estadoContrato = false
+            this.estadoQuery = false
         },
         CambiarEstadoEspecialidad(){
             this.estadoBienvenidoEdicion = false
@@ -120,57 +94,15 @@ export default {
             this.estadoUsuario = false
             this.estadoDoctor = false
             this.estadoEspecialidad = true
-            this.estadoCliente = false
-            this.estadoContratoDetalle = false
-            this.estadoCreadorContrato = false
-            this.estadoContrato = false
+            this.estadoQuery = false
         },
-        CambiarEstadoCliente(){
+        CambiarEstadoQuery(){
             this.estadoBienvenidoEdicion = false
             this.estadoPaciente = false
             this.estadoUsuario = false
             this.estadoDoctor = false
             this.estadoEspecialidad = false
-            this.estadoCliente = true
-            this.estadoContratoDetalle = false
-            this.estadoCreadorContrato = false
-            this.estadoContrato = false
-            
-        },
-        CambiarEstadoContrato(){
-            this.estadoBienvenidoEdicion = false
-            this.estadoPaciente = false
-            this.estadoUsuario = false
-            this.estadoDoctor = false
-            this.estadoEspecialidad = false
-            this.estadoCliente = false
-            this.estadoContratoDetalle = false
-            this.estadoCreadorContrato = false
-            this.estadoContrato = true
-            
-        },
-        CambiarEstadoContratoDetalle(){
-            this.estadoBienvenidoEdicion = false
-            this.estadoPaciente = false
-            this.estadoUsuario = false
-            this.estadoDoctor = false
-            this.estadoEspecialidad = false
-            this.estadoCliente = false
-            this.estadoContratoDetalle = true
-            this.estadoCreadorContrato = false
-            this.estadoContrato = false
-            
-        },
-        CambiarEstadoCreadorContrato(){
-            this.estadoBienvenidoEdicion = false
-            this.estadoPaciente = false
-            this.estadoUsuario = false
-            this.estadoDoctor = false
-            this.estadoEspecialidad = false
-            this.estadoCliente = false
-            this.estadoContratoDetalle = false
-            this.estadoCreadorContrato = true
-            this.estadoContrato = false
+            this.estadoQuery = true
             
         },
     },
@@ -187,8 +119,8 @@ export default {
         CambiarEstiloBotonEspecialidad(){
             return this.estadoEspecialidad ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
         },
-        CambiarEstiloBotonCliente(){
-            return this.estadoCliente ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
+        CambiarEstiloBotonQuery(){
+            return this.estadoQuery ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
         },
         CambiarEstiloBotonContratoDetalle(){
             return this.estadoContratoDetalle ? 'p-button-secondary p-mr-2 p-mb-2' :'p-button-outlined p-button-info p-mr-2 p-mb-2'
