@@ -119,13 +119,13 @@ export default {
             }
         },
         async getContratoDetalles(){
-			await axios.get('http://18.230.199.15:8000/v1/contratodetallexcodigocliente/' + this.cliente_id)
+			await axios.get('http://localhost:8000/v1/contratodetallexcodigocliente/' + this.cliente_id)
                 .then(data => {
                 this.contratoDetalles = data.data
                 })
         },
         async getClientes(){
-            await axios.get('http://18.230.199.15:8000/v1/cliente')
+            await axios.get('http://localhost:8000/v1/cliente')
 			.then(data => {
                 this.clientes = data.data
                 for (let index = 0; index < this.clientes.length; index++) {
@@ -134,7 +134,7 @@ export default {
 			})
         },
         async getCliente(){
-            await axios.get('http://18.230.199.15:8000/v1/cliente/' + this.cliente_id)
+            await axios.get('http://localhost:8000/v1/cliente/' + this.cliente_id)
                 .then(data => {
                 this.cliente = data.data
                 });

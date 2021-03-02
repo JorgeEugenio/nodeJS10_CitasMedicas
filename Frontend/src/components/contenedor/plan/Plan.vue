@@ -137,7 +137,7 @@ export default {
 	},
 	methods: {
 		getPlanes(){
-			fetch('http://18.230.199.15:8000/v1/plan')
+			fetch('http://localhost:8000/v1/plan')
 			.then(res => res.json())
 			.then(data => {
 				this.planes = data
@@ -170,7 +170,7 @@ export default {
                                 !this.plan.descripcion == ''
             if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8000/v1/plan', {
+                    fetch('http://localhost:8000/v1/plan', {
                     method: 'POST',
                     body: JSON.stringify(this.plan),
                     headers: {
@@ -188,7 +188,7 @@ export default {
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});		
                 }else {
                     this.getPlan(this.plan)
-                    fetch('http://18.230.199.15:8000/v1/plan/' + this.plan._id, {
+                    fetch('http://localhost:8000/v1/plan/' + this.plan._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.plan),
                     headers: {
@@ -210,7 +210,7 @@ export default {
 		},
 		getPlan(plan) {
 			this.nuevo = true
-			fetch('http://18.230.199.15:8000/v1/plan/' + plan._id)
+			fetch('http://localhost:8000/v1/plan/' + plan._id)
 				.then(res => res.json())
 				.then(data => {
 				const { TipoPlan, nombrePlan, descripcion, status, direccion } = data;
@@ -219,7 +219,7 @@ export default {
 				});
 		},
 		deletePlan() {
-			fetch('http://18.230.199.15:8000/v1/plan/' + this.plan._id, {
+			fetch('http://localhost:8000/v1/plan/' + this.plan._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -265,7 +265,7 @@ export default {
 		},
 		deleteSelectedPlans() {
 			for (let step = 0; step < this.selectedPlans.length; step++) {
-				fetch('http://18.230.199.15:8000/v1/plan/' + this.selectedPlans[step]._id, {
+				fetch('http://localhost:8000/v1/plan/' + this.selectedPlans[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

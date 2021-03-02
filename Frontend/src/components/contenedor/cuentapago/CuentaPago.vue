@@ -150,7 +150,7 @@ export default {
 	},
 	methods: {
 		getCuentaPagos(){
-			fetch('http://18.230.199.15:8000/v1/cuentapago')
+			fetch('http://localhost:8000/v1/cuentapago')
 			.then(res => res.json())
 			.then(data => {
 				this.cuentapagos = data
@@ -185,7 +185,7 @@ export default {
                                 !this.cuentapago.statusCuentaPago == ''
             if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8000/v1/cuentapago', {
+                    fetch('http://localhost:8000/v1/cuentapago', {
                     method: 'POST',
                     body: JSON.stringify(this.cuentapago),
                     headers: {
@@ -204,7 +204,7 @@ export default {
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
 			}
 			else {
-				fetch('http://18.230.199.15:8000/v1/cuentapago/' + this.cuentapago._id, {
+				fetch('http://localhost:8000/v1/cuentapago/' + this.cuentapago._id, {
 				method: 'PUT',
 				body: JSON.stringify(this.cuentapago),
 				headers: {
@@ -229,7 +229,7 @@ export default {
 		},
 		getCuentaPago(cuentapago) {
 			this.nuevo = true
-			fetch('http://18.230.199.15:8000/v1/cuentapago/' + cuentapago._id)
+			fetch('http://localhost:8000/v1/cuentapago/' + cuentapago._id)
 				.then(res => res.json())
 				.then(data => {
 				const { banco, nombreCuentaPago, numeroCuentaPago, cciCuentaPago, propietarioCuentaPago, statusCuentaPago } = data;
@@ -238,7 +238,7 @@ export default {
 				});
 		},
 		deleteCuentaPago() {
-			fetch('http://18.230.199.15:8000/v1/cuentapago/' + this.cuentapago._id, {
+			fetch('http://localhost:8000/v1/cuentapago/' + this.cuentapago._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -284,7 +284,7 @@ export default {
 		},
 		deleteSelectedCuentaPagos() {
 			for (let step = 0; step < this.selectedCuentaPagos.length; step++) {
-				fetch('http://18.230.199.15:8000/v1/cuentapago/' + this.selectedCuentaPagos[step]._id, {
+				fetch('http://localhost:8000/v1/cuentapago/' + this.selectedCuentaPagos[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

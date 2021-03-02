@@ -18,7 +18,7 @@ npm install
 yarn
 </pre>
 
-                <p>Next step is running the application using the serve script and navigate to <b>http://18.230.199.15:8080/</b> to view the application.
+                <p>Next step is running the application using the serve script and navigate to <b>http://localhost:8080/</b> to view the application.
                     That is it, you may now start with the development of your application using the Sigma template.</p>
 
                 <pre>

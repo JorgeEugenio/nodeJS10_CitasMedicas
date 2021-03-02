@@ -170,7 +170,7 @@ export default {
 	},
 	methods: {
 		getTorres(){
-			fetch('http://18.230.199.15:8000/v1/torre')
+			fetch('http://localhost:8000/v1/torre')
 			.then(res => res.json())
 			.then(data => {
 				this.torres = data
@@ -178,7 +178,7 @@ export default {
 			})
 		},
 		getVista1(){
-			fetch('http://18.230.199.15:8001/v1/vista1')
+			fetch('http://localhost:8001/v1/vista1')
 			.then(res => res.json())
 			.then(data => {
 				this.vista1 = data
@@ -219,7 +219,7 @@ export default {
                                 !this.torre.direccionTorre.mzlt == ''
             if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8000/v1/torre', {
+                    fetch('http://localhost:8000/v1/torre', {
                     method: 'POST',
                     body: JSON.stringify(this.torre),
                     headers: {
@@ -238,7 +238,7 @@ export default {
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});		
                 }else {
 					
-                    fetch('http://18.230.199.15:8000/v1/torre/' + this.torre._id, {
+                    fetch('http://localhost:8000/v1/torre/' + this.torre._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.torre),
                     headers: {
@@ -262,7 +262,7 @@ export default {
 		},
 		getTorre(torre) {
 			this.nuevo = true
-			fetch('http://18.230.199.15:8000/v1/torre/' + torre._id)
+			fetch('http://localhost:8000/v1/torre/' + torre._id)
 				.then(res => res.json())
 				.then(data => {
 				const { TipoTorre, nombreTorre, descripcionTorre, statusTorre, direccionTorre } = data;
@@ -271,7 +271,7 @@ export default {
 				});
 		},
 		deleteTorre() {
-			fetch('http://18.230.199.15:8000/v1/torre/' + this.torre._id, {
+			fetch('http://localhost:8000/v1/torre/' + this.torre._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -317,7 +317,7 @@ export default {
 		},
 		deleteSelectedTorres() {
 			for (let step = 0; step < this.selectedTorres.length; step++) {
-				fetch('http://18.230.199.15:8000/v1/torre/' + this.selectedTorres[step]._id, {
+				fetch('http://localhost:8000/v1/torre/' + this.selectedTorres[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

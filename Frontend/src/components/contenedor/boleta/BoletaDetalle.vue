@@ -229,7 +229,7 @@ export default {
 			this.getPlan()
 		},
 		async getBoletaDetalles(){//en uso
-			await axios.get('http://18.230.199.15:8000/v1/boletadetallexcodigoboleta/'+this.boleta.codigoBoleta)
+			await axios.get('http://localhost:8000/v1/boletadetallexcodigoboleta/'+this.boleta.codigoBoleta)
 			.then(data => {
 				this.boletaDetalles = data.data
 				//console.log(this.boletaDetalles);
@@ -241,7 +241,7 @@ export default {
 			})
 		},
 		async getBoletaxCodigo(){//se usa
-			await axios.get('http://18.230.199.15:8000/v1/boletaxcodigoboleta/' + this.boleta.codigoBoleta)
+			await axios.get('http://localhost:8000/v1/boletaxcodigoboleta/' + this.boleta.codigoBoleta)
                 .then(data => {
 				this.busquedaBoleta = data.data
                 })
@@ -255,7 +255,7 @@ export default {
 				}	
 		},
 		async getPlanes(){
-			await axios.get('http://18.230.199.15:8000/v1/plan')
+			await axios.get('http://localhost:8000/v1/plan')
 			.then(data => {
 				this.planes = data.data
 				for (let index = 0; index < this.planes.length; index++) {
@@ -264,7 +264,7 @@ export default {
 			})
 		},
 		async getPlan(){
-			await axios.get('http://18.230.199.15:8000/v1/plan/'+ this.variablesLocales.servicio_id)
+			await axios.get('http://localhost:8000/v1/plan/'+ this.variablesLocales.servicio_id)
 			.then(data => {
 				this.plan = data.data
 			})
@@ -322,24 +322,24 @@ export default {
 								!this.plan.costo == ''
 			if (validacion) {
                 if(this.nuevo === true) {
-					await axios.post('http://18.230.199.15:8000/v1/boletadetalle', this.boletaDetalle)
+					await axios.post('http://localhost:8000/v1/boletadetalle', this.boletaDetalle)
 					await this.getBoletaDetalles()
 					this.boletaNueva = this.boleta
 					console.log(this.boletaNueva);
 					this.boletaNueva.monto = this.nuevoMonto
 					if (! await this.existenciaBoleta()) {
-						await axios.post('http://18.230.199.15:8000/v1/boleta/', this.boletaNueva)
+						await axios.post('http://localhost:8000/v1/boleta/', this.boletaNueva)
 					}else{
-						await axios.put('http://18.230.199.15:8000/v1/boletaxcodigoboleta/'+this.boletaNueva.codigoBoleta, this.boletaNueva)	
+						await axios.put('http://localhost:8000/v1/boletaxcodigoboleta/'+this.boletaNueva.codigoBoleta, this.boletaNueva)	
 					}
 					this.boletaDetalleDialog = false
 					this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
                 }else {
-					await axios.put('http://18.230.199.15:8000/v1/boletadetalle/'+this.boletaDetalle._id, this.boletaDetalle)
+					await axios.put('http://localhost:8000/v1/boletadetalle/'+this.boletaDetalle._id, this.boletaDetalle)
 					await this.getBoletaDetalles()
 					this.boletaNueva = this.boleta
 					this.boletaNueva.monto = this.nuevoMonto
-					await axios.put('http://18.230.199.15:8000/v1/boletaxcodigoboleta/'+this.boletaNueva.codigoBoleta, this.boletaNueva)
+					await axios.put('http://localhost:8000/v1/boletaxcodigoboleta/'+this.boletaNueva.codigoBoleta, this.boletaNueva)
 					this.boletaDetalleDialog = false
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
                 }
@@ -348,11 +348,11 @@ export default {
             }
 		},
 		async deleteBoletaDetalle() {
-			await axios.delete('http://18.230.199.15:8000/v1/boletadetalle/'+this.boletaDetalle._id)
+			await axios.delete('http://localhost:8000/v1/boletadetalle/'+this.boletaDetalle._id)
 			await this.getBoletaDetalles()
 			this.boletaNueva = this.boleta
 			this.boletaNueva.monto = this.nuevoMonto
-			await axios.put('http://18.230.199.15:8000/v1/boletaxcodigoboleta/'+this.boletaNueva.codigoBoleta, this.boletaNueva)
+			await axios.put('http://localhost:8000/v1/boletaxcodigoboleta/'+this.boletaNueva.codigoBoleta, this.boletaNueva)
 			this.deleteBoletaDialog = false
 			this.actualizar()
 			this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});

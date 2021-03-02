@@ -137,7 +137,7 @@ export default {
 	},
 	methods: {
 		getUsuarios(){
-			fetch('http://18.230.199.15:8002/v1/usuario')
+			fetch('http://localhost:8002/v1/usuario')
 			.then(res => res.json())
 			.then(data => {
 				this.usuarios = data
@@ -172,7 +172,7 @@ export default {
                                 !this.usuario.pass == '' 
             if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8002/v1/usuario', {
+                    fetch('http://localhost:8002/v1/usuario', {
                     method: 'POST',
                     body: JSON.stringify(this.usuario),
                     headers: {
@@ -190,7 +190,7 @@ export default {
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Pacient Created', life: 3000});		
                 }else {
                     this.getUsuario(this.usuario)
-                    fetch('http://18.230.199.15:8002/v1/usuario/' + this.usuario._id, {
+                    fetch('http://localhost:8002/v1/usuario/' + this.usuario._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.usuario),
                     headers: {
@@ -212,7 +212,7 @@ export default {
 		},
 		getUsuario(usuario) {
 			this.nuevo = true
-			fetch('http://18.230.199.15:8002/v1/usuario/' + usuario._id)
+			fetch('http://localhost:8002/v1/usuario/' + usuario._id)
 				.then(res => res.json())
 				.then(data => {
 				const { nombreUsuario, user, pass, correoUsuario } = data;
@@ -221,7 +221,7 @@ export default {
 				});
 		},
 		deleteUsuario() {
-			fetch('http://18.230.199.15:8002/v1/usuario/' + this.usuario._id, {
+			fetch('http://localhost:8002/v1/usuario/' + this.usuario._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -248,7 +248,7 @@ export default {
 		},
 		deleteselectedUsuarios() {
 			for (let step = 0; step < this.selectedUsuarios.length; step++) {
-				fetch('http://18.230.199.15:8002/v1/usuario/' + this.selectedUsuarios[step]._id, {
+				fetch('http://localhost:8002/v1/usuario/' + this.selectedUsuarios[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

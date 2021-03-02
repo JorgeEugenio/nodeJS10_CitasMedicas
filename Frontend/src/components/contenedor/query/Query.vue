@@ -134,11 +134,11 @@ export default {
 	},
 	methods: {
 		getQuerys(){
-			fetch('http://18.230.199.15:8002/v1/query')
+			fetch('http://localhost:8002/v1/query')
 			.then(res => res.json())
 			.then(data => {
 				this.querys = data
-
+                console.log(this.querys);
 			})
 		},
 		formatCurrency(value) {
@@ -168,7 +168,7 @@ export default {
                                 !this.query.tipoQuery == '' 
             if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8002/v1/query', {
+                    fetch('http://localhost:8002/v1/query', {
                     method: 'POST',
                     body: JSON.stringify(this.query),
                     headers: {
@@ -186,7 +186,7 @@ export default {
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Pacient Created', life: 3000});		
                 }else {
                     this.getQuery(this.query)
-                    fetch('http://18.230.199.15:8002/v1/query/' + this.query._id, {
+                    fetch('http://localhost:8002/v1/query/' + this.query._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.query),
                     headers: {
@@ -208,7 +208,7 @@ export default {
 		},
 		getQuery(query) {
 			this.nuevo = true
-			fetch('http://18.230.199.15:8002/v1/query/' + query._id)
+			fetch('http://localhost:8002/v1/query/' + query._id)
 				.then(res => res.json())
 				.then(data => {
 				const { project, query , rutaQuery, tipoQuery } = data;
@@ -217,7 +217,7 @@ export default {
 				});
 		},
 		deleteQuery() {
-			fetch('http://18.230.199.15:8002/v1/query/' + this.query._id, {
+			fetch('http://localhost:8002/v1/query/' + this.query._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -244,7 +244,7 @@ export default {
 		},
 		deleteselectedQuerys() {
 			for (let step = 0; step < this.selectedQuerys.length; step++) {
-				fetch('http://18.230.199.15:8002/v1/query/' + this.selectedQuerys[step]._id, {
+				fetch('http://localhost:8002/v1/query/' + this.selectedQuerys[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

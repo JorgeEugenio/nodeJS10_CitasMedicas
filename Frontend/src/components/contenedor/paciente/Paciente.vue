@@ -123,7 +123,7 @@ export default {
 	},
 	methods: {
 		getPacientes(){
-			fetch('http://18.230.199.15:8002/v1/paciente')
+			fetch('http://localhost:8002/v1/paciente')
 			.then(res => res.json())
 			.then(data => {
 				this.pacientes = data
@@ -156,7 +156,7 @@ export default {
                                 !this.paciente.apellidoPaciente == ''
             if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8002/v1/paciente', {
+                    fetch('http://localhost:8002/v1/paciente', {
                     method: 'POST',
                     body: JSON.stringify(this.paciente),
                     headers: {
@@ -174,7 +174,7 @@ export default {
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Pacient Created', life: 3000});		
                 }else {
                     this.getPaciente(this.paciente)
-                    fetch('http://18.230.199.15:8002/v1/paciente/' + this.paciente._id, {
+                    fetch('http://localhost:8002/v1/paciente/' + this.paciente._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.paciente),
                     headers: {
@@ -196,7 +196,7 @@ export default {
 		},
 		getPaciente(paciente) {
 			this.nuevo = true
-			fetch('http://18.230.199.15:8002/v1/paciente/' + paciente._id)
+			fetch('http://localhost:8002/v1/paciente/' + paciente._id)
 				.then(res => res.json())
 				.then(data => {
 				const { TipoPaciente, nombrePaciente, apellidoPaciente, dniPaciente, direccion } = data;
@@ -205,7 +205,7 @@ export default {
 				});
 		},
 		deletePaciente() {
-			fetch('http://18.230.199.15:8002/v1/paciente/' + this.paciente._id, {
+			fetch('http://localhost:8002/v1/paciente/' + this.paciente._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -232,7 +232,7 @@ export default {
 		},
 		deleteselectedPacientes() {
 			for (let step = 0; step < this.selectedPacientes.length; step++) {
-				fetch('http://18.230.199.15:8002/v1/paciente/' + this.selectedPacientes[step]._id, {
+				fetch('http://localhost:8002/v1/paciente/' + this.selectedPacientes[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

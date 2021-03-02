@@ -163,13 +163,13 @@ export default {
 			await this.getEspecialidades()
 		},
 		async getDoctores(){
-			await axios.get('http://18.230.199.15:8002/v1/doctoresdetalles')
+			await axios.get('http://localhost:8002/v1/doctoresdetalles')
 			.then(data => {
 				this.doctores = data.data
 			})
 		},
 		async getEspecialidades(){
-			await axios.get('http://18.230.199.15:8002/v1/especialidad')
+			await axios.get('http://localhost:8002/v1/especialidad')
 			.then(data => {
 				this.especialidadesres = data.data
 				for (let index = 0; index < this.especialidadesres.length; index++) {
@@ -207,7 +207,7 @@ export default {
             
 			if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8002/v1/doctor', {
+                    fetch('http://localhost:8002/v1/doctor', {
                     method: 'POST',
                     body: JSON.stringify(this.doctor),
                     headers: {
@@ -225,7 +225,7 @@ export default {
 					console.log('estoy en post');
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});		
                 }else {
-                    fetch('http://18.230.199.15:8002/v1/doctor/' + this.doctor._id, {
+                    fetch('http://localhost:8002/v1/doctor/' + this.doctor._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.doctor),
                     headers: {
@@ -247,7 +247,7 @@ export default {
             }
 		},
 		deleteDoctor() {
-			fetch('http://18.230.199.15:8002/v1/doctor/' + this.doctor._id, {
+			fetch('http://localhost:8002/v1/doctor/' + this.doctor._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -285,7 +285,7 @@ export default {
 		},
 		deleteSelectedDoctors() {
 			for (let step = 0; step < this.selectedDoctors.length; step++) {
-				fetch('http://18.230.199.15:8002/v1/doctor/' + this.selectedDoctors[step]._id, {
+				fetch('http://localhost:8002/v1/doctor/' + this.selectedDoctors[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

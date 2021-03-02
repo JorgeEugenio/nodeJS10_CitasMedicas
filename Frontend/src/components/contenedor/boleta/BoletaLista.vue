@@ -194,7 +194,7 @@ export default {
 			this.boletaDialog = false;
 			this.boleta = new Boleta(this.NuevoCodigoBoleta, this.cliente._id, this.fechaAnio, this.fechaMes, this.cliente.codigoCliente, 0, this.tiempoPago,'Activo', 'pendiente')
 			if (this.editar) {
-				await axios.put('http://18.230.199.15:8000/v1/boletaxcodigoboleta/'+this.boleta.codigoBoleta, this.boleta)
+				await axios.put('http://localhost:8000/v1/boletaxcodigoboleta/'+this.boleta.codigoBoleta, this.boleta)
 			}else{
 				this.$emit('boleta',{boleta : this.boleta, editar : false} )
 			}
@@ -204,7 +204,7 @@ export default {
 		async pagarBoleta(boleta){
 			this.boleta = boleta
 			this.boleta.statusPago = 'pagado'
-			await axios.put('http://18.230.199.15:8000/v1/boletaxcodigoboleta/'+this.boleta.codigoBoleta, this.boleta)
+			await axios.put('http://localhost:8000/v1/boletaxcodigoboleta/'+this.boleta.codigoBoleta, this.boleta)
 			
 		},
 		editarBoleta(data){
@@ -224,7 +224,7 @@ export default {
 			this.$emit('boleta',{boleta : boleta, editar : true} )
 		},
 		deleteBoletaDetalle() {//pendiente implementacion
-				axios.delete('http://18.230.199.15:8000/v1/boletadetalle/' + this.boletaDetalle._id)
+				axios.delete('http://localhost:8000/v1/boletadetalle/' + this.boletaDetalle._id)
 				this.deleteBoletaDialog = false
 				this.actualizar()
 				this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});

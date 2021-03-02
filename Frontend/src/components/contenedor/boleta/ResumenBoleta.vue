@@ -310,13 +310,13 @@ constructor(mes01 = {'cuentaPagado':0, 'cuentaPendiente':0, 'cuentaVacio':0, 'mo
 				return total;
 			},
 			async getClientes(){
-			await axios.get('http://18.230.199.15:8000/v1/cliente')
+			await axios.get('http://localhost:8000/v1/cliente')
                 .then(data => {
                 this.clientes = data.data
                 })
 			},
 			async getBoletas(){
-			await axios.get('http://18.230.199.15:8000/v1/boleta')
+			await axios.get('http://localhost:8000/v1/boleta')
 				.then(data => {
 				this.boletas = data.data
 				})

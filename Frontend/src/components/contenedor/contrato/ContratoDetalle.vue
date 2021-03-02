@@ -176,14 +176,14 @@ export default {
 			this.getPlan()
 		},
 		async getContratoDetalles(){
-			await axios.get('http://18.230.199.15:8000/v1/contratodetallexcodigocliente/'+ this.IdClient)
+			await axios.get('http://localhost:8000/v1/contratodetallexcodigocliente/'+ this.IdClient)
 			.then(data => {
 				this.contratoDetalles = data.data
 				//console.log(this.contratoDetalles);
 			})
 		},
 		async getPlanes(){
-			await axios.get('http://18.230.199.15:8000/v1/plan')
+			await axios.get('http://localhost:8000/v1/plan')
 			.then(data => {
 				this.planes = data.data
 				for (let index = 0; index < this.planes.length; index++) {
@@ -193,7 +193,7 @@ export default {
 			})
 		},
 		async getPlan(){
-			await axios.get('http://18.230.199.15:8000/v1/plan/'+ this.servicio_id)
+			await axios.get('http://localhost:8000/v1/plan/'+ this.servicio_id)
 			.then(data => {
 				this.plan = data.data
 			})
@@ -231,7 +231,7 @@ export default {
 			this.contratoDetalle.serviciosContratados.costoServicio = this.plan.costo
 			if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8000/v1/contratodetalle', {
+                    fetch('http://localhost:8000/v1/contratodetalle', {
                     method: 'POST',
                     body: JSON.stringify(this.contratoDetalle),
                     headers: {
@@ -249,7 +249,7 @@ export default {
 					});
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});		
                 }else {
-                    fetch('http://18.230.199.15:8000/v1/contratodetalle/' + this.contratoDetalle._id, {
+                    fetch('http://localhost:8000/v1/contratodetalle/' + this.contratoDetalle._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.contratoDetalle),
                     headers: {
@@ -270,7 +270,7 @@ export default {
             }
 		},
 		deleteContratoDetalle() {
-			fetch('http://18.230.199.15:8000/v1/contratodetalle/' + this.contratoDetalle._id, {
+			fetch('http://localhost:8000/v1/contratodetalle/' + this.contratoDetalle._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -308,7 +308,7 @@ export default {
 		},
 		deleteSelectedContratos() {
 			for (let step = 0; step < this.selectedContratos.length; step++) {
-				fetch('http://18.230.199.15:8000/v1/contratodetalle/' + this.selectedContratos[step]._id, {
+				fetch('http://localhost:8000/v1/contratodetalle/' + this.selectedContratos[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

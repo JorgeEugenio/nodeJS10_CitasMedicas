@@ -163,14 +163,14 @@ export default {
 	},
 	methods: {
 		getSectores(){
-			fetch('http://18.230.199.15:8000/v1/sector')
+			fetch('http://localhost:8000/v1/sector')
 			.then(res => res.json())
 			.then(data => {
 				this.sectores = data
 			})
         },
         getSectoresDetalles(){
-			fetch('http://18.230.199.15:8000/v1/sectoresdetalles')
+			fetch('http://localhost:8000/v1/sectoresdetalles')
 			.then(res => res.json())
 			.then(data => {
 				this.sectoresDetalles = data
@@ -205,7 +205,7 @@ export default {
 
 			if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8000/v1/sector', {
+                    fetch('http://localhost:8000/v1/sector', {
                     method: 'POST',
                     body: JSON.stringify(this.sector),
                     headers: {
@@ -223,7 +223,7 @@ export default {
 					console.log('estoy en post');
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});		
                 }else {
-                    fetch('http://18.230.199.15:8000/v1/sector/' + this.sectoresDetalle._id, {
+                    fetch('http://localhost:8000/v1/sector/' + this.sectoresDetalle._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.sectoresDetalle),
                     headers: {
@@ -244,7 +244,7 @@ export default {
                 this.sectorDialog = true
             }
 		},getTorres() {
-			fetch('http://18.230.199.15:8000/v1/torre')
+			fetch('http://localhost:8000/v1/torre')
 			.then(res => res.json())
 			.then(data => {
 				this.torres = data
@@ -256,7 +256,7 @@ export default {
 		},
 		getSector(sector) {
 			this.nuevo = true
-			fetch('http://18.230.199.15:8000/v1/sector/' + sector._id)
+			fetch('http://localhost:8000/v1/sector/' + sector._id)
 				.then(res => res.json())
 				.then(data => {
 				const { nombreSector, statusSector, descripcionSector, idTorre } = data;
@@ -265,7 +265,7 @@ export default {
 				});
 		},
 		deleteSector() {
-			fetch('http://18.230.199.15:8000/v1/sector/' + this.sectoresDetalle.sectoresDetalles._id, {
+			fetch('http://localhost:8000/v1/sector/' + this.sectoresDetalle.sectoresDetalles._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -311,7 +311,7 @@ export default {
 		},
 		deleteSelectedSectors() {
 			for (let step = 0; step < this.selectedSectors.length; step++) {
-				fetch('http://18.230.199.15:8000/v1/sector/' + this.selectedSectors[step]._id, {
+				fetch('http://localhost:8000/v1/sector/' + this.selectedSectors[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

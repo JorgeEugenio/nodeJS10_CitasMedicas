@@ -222,13 +222,13 @@ export default {
 			await this.getCuentaPagos()
 		},
 		async getClientes(){
-			await axios.get('http://18.230.199.15:8000/v1/cliente')
+			await axios.get('http://localhost:8000/v1/cliente')
 			.then(data => {
 				this.clientes = data.data
 			})
 		},
 		async getCuentaPagos(){
-			await axios.get('http://18.230.199.15:8000/v1/cuentapago')
+			await axios.get('http://localhost:8000/v1/cuentapago')
 			.then(data => {
 				this.cuentapagosres = data.data
 				for (let index = 0; index < this.cuentapagosres.length; index++) {
@@ -280,7 +280,7 @@ export default {
             
 			if (validacion) {
                 if(!this.nuevo === true) {
-                    fetch('http://18.230.199.15:8000/v1/cliente', {
+                    fetch('http://localhost:8000/v1/cliente', {
                     method: 'POST',
                     body: JSON.stringify(this.cliente),
                     headers: {
@@ -298,7 +298,7 @@ export default {
 					console.log('estoy en post');
                     this.$toast.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});		
                 }else {
-                    fetch('http://18.230.199.15:8000/v1/cliente/' + this.cliente._id, {
+                    fetch('http://localhost:8000/v1/cliente/' + this.cliente._id, {
                     method: 'PUT',
                     body: JSON.stringify(this.cliente),
                     headers: {
@@ -320,7 +320,7 @@ export default {
             }
 		},
 		deleteCliente() {
-			fetch('http://18.230.199.15:8000/v1/cliente/' + this.cliente._id, {
+			fetch('http://localhost:8000/v1/cliente/' + this.cliente._id, {
 				method: 'DELETE',
 				headers: {
 				'Accept': 'application/json',
@@ -358,7 +358,7 @@ export default {
 		},
 		deleteSelectedClientes() {
 			for (let step = 0; step < this.selectedClientes.length; step++) {
-				fetch('http://18.230.199.15:8000/v1/cliente/' + this.selectedClientes[step]._id, {
+				fetch('http://localhost:8000/v1/cliente/' + this.selectedClientes[step]._id, {
 					method: 'DELETE',
 					headers: {
 					'Accept': 'application/json',

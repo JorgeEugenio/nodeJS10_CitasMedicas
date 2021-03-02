@@ -51,7 +51,7 @@ export default {
         },
         methods: {
             async getContratos(){
-                await axios.get('http://18.230.199.15:8000/v1/boletadetalle/')
+                await axios.get('http://localhost:8000/v1/boletadetalle/')
                 .then(data => {
                 this.contratos = data.data
                 //console.log(this.contratos);
