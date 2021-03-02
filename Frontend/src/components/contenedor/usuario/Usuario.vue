@@ -256,10 +256,10 @@ export default {
 					}
 					})
 					.then(res => res.json())
-					this.getUsuarios();
 			}
 			this.deleteUsuariosDialog = false;
 			this.selectedUsuarios = null;
+			this.getUsuarios();
 			this.$toast.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
 		},
 	}, computed:{

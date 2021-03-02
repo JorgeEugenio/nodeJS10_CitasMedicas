@@ -21,6 +21,7 @@ async function addPaciente (req,res){
 }
 async function getPacientes(req, res){
     const pacientes = await Paciente.find()
+    
     //console.log(pacientes);
     res.status(200).send(pacientes)
     }
@@ -44,6 +45,16 @@ async function getPaciente(req,res){
     res.json(paciente);
 }
 
+async function conexionMongodb (req, res){
+    const doc = await Person.create({ name: 'Ned Stark' });
+    const changeStream = Person.watch().on('change', change => console.log(change));
+    // Will print from the above `console.log()`:
+    // { _id: { _data: ... },
+    //   operationType: 'delete',
+    //   ns: { db: 'mydb', coll: 'Person' },
+    //   documentKey: { _id: 5a51b125c5500f5aa094c7bd } }
+    await doc.remove();
+}
 module.exports = {
     addPaciente,
     getPacientes,
