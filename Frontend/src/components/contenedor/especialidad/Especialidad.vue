@@ -120,6 +120,7 @@ export default {
 			.then(res => res.json())
 			.then(data => {
 				this.especialidades = data
+				console.log(this.especialidades);
 			})
 		},
 		formatCurrency(value) {

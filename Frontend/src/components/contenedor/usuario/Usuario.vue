@@ -141,6 +141,7 @@ export default {
 			.then(res => res.json())
 			.then(data => {
 				this.usuarios = data
+				console.log(this.usuarios);
 
 			})
 		},

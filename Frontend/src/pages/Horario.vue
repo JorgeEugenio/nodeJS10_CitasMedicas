@@ -46,6 +46,7 @@ export default {
 		this.eventService.getEvents()
 		.then(data => {
 			this.events = data
+			console.log(this.events);
 
 		});
 	}

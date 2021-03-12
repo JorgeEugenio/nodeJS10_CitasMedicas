@@ -166,6 +166,7 @@ export default {
 			await axios.get('http://localhost:8002/v1/doctoresdetalles')
 			.then(data => {
 				this.doctores = data.data
+				console.log(this.doctores);
 			})
 		},
 		async getEspecialidades(){
