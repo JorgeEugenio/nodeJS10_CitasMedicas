@@ -1,6 +1,5 @@
 //const { emit } = require('../models/Tablacitamedica')
 const Tablacitamedica =require('../models/Tablacitamedica')
-const Plan = require('../models/Plan')
 //const e = require('express')
 async function addTablacitamedica (req,res){
     try {

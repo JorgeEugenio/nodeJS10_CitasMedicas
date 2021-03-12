@@ -5,13 +5,60 @@ async function addTablahorario (req,res){
     try {
         const {
             idDoctor,
-            fechaAtencion
-
+            fechaAtencion,
+            T00,
+            T01,
+            T02,
+            T03,
+            T04,
+            T05,
+            T06,
+            T07,
+            T08,
+            T09,
+            T10,
+            T11,
+            T12,
+            T13,
+            T14,
+            T15,
+            T16,
+            T17,
+            T18,
+            T19,
+            T20,
+            T21,
+            T22,
+            T23
         } = req.body
 
         const tablahorario = Tablahorario({
             idDoctor,
-            fechaAtencion
+            fechaAtencion,
+            T00,
+            T01,
+            T02,
+            T03,
+            T04,
+            T05,
+            T06,
+            T07,
+            T08,
+            T09,
+            T10,
+            T11,
+            T12,
+            T13,
+            T14,
+            T15,
+            T16,
+            T17,
+            T18,
+            T19,
+            T20,
+            T21,
+            T22,
+            T23
 
         })
         await tablahorario.save()
@@ -55,13 +102,13 @@ async function getTablahorarioesDetalles(req, res){
     try {
         const tablahorarioesDetalles = await Tablahorario.aggregate()
                                 .lookup({
-                                    from: "torres",
-                                    localField: "idTorre",
+                                    from: "doctors",
+                                    localField: "idDoctor",
                                     foreignField: "_id",
-                                    as: 'torre'
+                                    as: 'detalle'
                                     })
                                 .replaceRoot({
-                                    tablahorarioesDetalles: { $mergeObjects: [ { $arrayElemAt: [ "$torre", 0 ] }, "$$ROOT" ] }  
+                                    tablahorarioesDetalles: { $mergeObjects: [ { $arrayElemAt: [ "$detalle", 0 ] }, "$$ROOT" ] }  
                                 })
         res.status(200).send(tablahorarioesDetalles)
     } catch (e) {

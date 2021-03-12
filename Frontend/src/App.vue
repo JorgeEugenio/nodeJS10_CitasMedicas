@@ -47,6 +47,7 @@ export default {
 					items: [
 						{label: 'Edición', icon: 'pi pi-fw pi-circle-off',to: '/edicion'},
                         {label: 'Crud', icon: 'pi pi-fw pi-user-edit', to: '/crud'},
+                        {label: 'Horario', icon: 'pi pi-fw pi-user-edit', to: '/horario'},
 					]
 				}
             ]

@@ -4,7 +4,6 @@ require('dotenv').config()
 const app = require('./app')
 const connectDB = require('./db/mongodb')
 const { appConfig, dbConfig } = require('./config');
-const Cliente = require('./models/Cliente');
 
 //node server
 const server = require('http').createServer(app);

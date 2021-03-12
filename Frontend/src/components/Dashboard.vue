@@ -324,7 +324,11 @@ export default {
 	},
 	mounted() {
 		this.productService.getProductsSmall().then(data => this.products = data);
-		this.eventService.getEvents().then(data => this.events = data);
+		this.eventService.getEvents()
+		.then(data => {
+			this.events = data
+			console.log(this.events);
+		});
 
 		let afId = this.$route.query['af_id'];
         if (afId) {

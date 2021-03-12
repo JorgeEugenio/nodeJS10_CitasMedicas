@@ -58,6 +58,11 @@ const routes = [
         component: () => import('./pages/Edicion.vue'),
     },
     {
+        path: '/horario',
+        name: 'horario',
+        component: () => import('./pages/Horario.vue'),
+    },
+    {
         path: '/resumen',
         name: 'resumen',
         component: () => import('./pages/Resumen.vue'),
